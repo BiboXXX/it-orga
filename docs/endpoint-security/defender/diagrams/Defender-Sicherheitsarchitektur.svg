@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1190" height="250" viewBox="0 0 1190 250">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="currentColor"/></marker></defs>
+<text x="595.0" y="34" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700">Windows Endpoint Security – Zielarchitektur</text>
+<rect x="40" y="95" width="230" height="70" rx="12" fill="white" stroke="black" stroke-width="2"/>
+<text x="155.0" y="121.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="15">Microsoft Intune</text>
+<text x="155.0" y="139.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="15">Policy &amp; Compliance</text>
+<rect x="350" y="95" width="230" height="70" rx="12" fill="white" stroke="black" stroke-width="2"/>
+<text x="465.0" y="121.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="15">Microsoft Defender</text>
+<text x="465.0" y="139.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="15">EDR / XDR</text>
+<rect x="660" y="95" width="230" height="70" rx="12" fill="white" stroke="black" stroke-width="2"/>
+<text x="775.0" y="121.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="15">Microsoft Entra</text>
+<text x="775.0" y="139.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="15">Conditional Access</text>
+<rect x="970" y="95" width="180" height="70" rx="12" fill="white" stroke="black" stroke-width="2"/>
+<text x="1060.0" y="121.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="15">MDR / SOC</text>
+<text x="1060.0" y="139.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="15">Zielzustand</text>
+<line x1="270" y1="130" x2="350" y2="130" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="580" y1="130" x2="660" y2="130" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="890" y1="130" x2="970" y2="130" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>
