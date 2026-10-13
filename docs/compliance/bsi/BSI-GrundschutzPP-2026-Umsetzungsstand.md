@@ -2,9 +2,13 @@
 
 **Projekt:** IT-Neuorganisation  
 **Dokumenttyp:** zentrales Compliance-/Umsetzungsregister  
-**Stand:** 2026-10-11  
+**Stand:** 2026-10-13  
 **Bewertungsbasis:** BSI-Grundschutz++ 2026, Stand-der-Technik-Bibliothek  
 **Bewertungsart:** vorläufige Projektbewertung aus dokumentiertem Projektkontext; kein formales Audit.
+
+**Dokumentationsstandard:** BSI-Anforderungen, Erfüllungsbewertung, Defizite und Anforderungsnachweise werden ausschließlich hier gepflegt. Fachdokumentationen enthalten technische Designentscheidungen und den Soll/Ist-Zustand ohne BSI-Control-Mapping. Ein technischer Beleg ist nicht automatisch ein Compliance-Nachweis.
+
+**Fachreferenz:** [SEC-DEF-001 – Defender Windows Integration und Betrieb](../../endpoint-security/defender/Defender-Windows-Integration-und-Betrieb.md)
 
 ## Statusmodell
 
@@ -57,6 +61,25 @@
 | DET.4.1 Überwachung der Protokollierung | Sensor Health / Device Inventory / EDR Onboarding Status | 🟡 | regelmäßige Kontrolle und KPI festlegen |
 | DET.2.2 Security Operations Center | externer MDR/SOC als Zielzustand | 🔴 | 24/7-Betrieb noch nicht beschafft/umgesetzt |
 | REA – Vorfallsbehandlung | Isolation, Scan, Investigation, Remediation, CA-Sperrkette | 🟡 | organisatorische Runbooks und Eskalationsmatrix fehlen |
+
+## Nachverfolgbarkeit – Defender
+
+Die folgende Matrix verweist auf die stabilen Designentscheidungen in [SEC-DEF-001](../../endpoint-security/defender/Defender-Windows-Integration-und-Betrieb.md#2-designentscheidungen). **Control-Bezeichnungen/IDs und Abdeckung sind vorläufig** und vor einer Audit-Freigabe mit dem versionierten Originalkatalog abzugleichen. Verlinkte Entwürfe ersetzen keine Ist-Nachweise.
+
+| Grundschutz++ Bezug | Technische Design-IDs | Erforderliche Evidenz |
+|---|---|---|
+| KONF.2.1 | DEF-02, DEF-03, DEF-04, DEF-06, DEF-10 | Intune-Policy-Export, Gerätezuweisung |
+| KONF.7.1 | DEF-04, DEF-05, DEF-06 | AV-Policy und realer Geräteschutzstatus |
+| KONF.7.2 | DEF-04, DEF-05 | Scan-Konfiguration und Scan-Bericht |
+| KONF.7.3 | DEF-01, DEF-03, DEF-15 | EDR-Onboarding-/Sensorbericht |
+| KONF.7.4 | DEF-07 | Network-Protection-Policy und Block-Test |
+| KONF.7.9 | DEF-08, DEF-11 | Application-Control-/EPM-Policies |
+| KONF.7.10 | DEF-08, DEF-09 | ASR-Regelreport, App-Control-Auswertung |
+| KONF.7.12 | DEF-08 | ASR-/Script-Härtungsnachweis |
+| DET.3.1 ff. | DEF-01, DEF-03 | Incident-/Alert- und Retention-Konzept |
+| DET.4.1 | DEF-03 | EDR-Onboarding-Status und Health-Review |
+| DET.2.2 | DEF-16 | MDR-Vertrag, 24/7-Eskalation, Übungsprotokoll |
+| REA | DEF-12, DEF-13, DEF-14, DEF-15, DEF-16 | CA-Test, Incident-Runbooks und Response-Protokoll |
 
 ## Nachweisführung
 
