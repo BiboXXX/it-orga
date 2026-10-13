@@ -4,12 +4,14 @@
 **Scope:** ausschließlich neue Windows-Client-Infrastruktur  
 **Server:** ausgeschlossen  
 **Stand:** 2026-10-11  
-**Referenz:** BSI-Grundschutz++ 2026  
+**Dokumenten-ID:** SEC-DEF-001  
 **Produktbasis:** Microsoft Defender for Business / Microsoft Defender XDR, Intune, Entra Conditional Access  
-**UI-/Clickpath-Abgleich:** 2026-10-11 gegen Microsoft Learn
+**UI-/Clickpath-Abgleich:** 2026-10-11 (laut vorheriger Dokumentationsfassung; bei Änderung erneut prüfen)
 
 > **Auditgrundsatz:** Nicht im Projekt nachgewiesene Tenant-Einstellungen werden nicht als Ist-Zustand behauptet.
 > Sie sind mit **zu verifizieren** gekennzeichnet. Der Soll-Zustand ist davon getrennt.
+
+Die Konformitätsbewertung einschließlich aller BSI-Anforderungszuordnungen wird ausschließlich im [zentralen Umsetzungsregister](../../compliance/bsi/BSI-GrundschutzPP-2026-Umsetzungsstand.md) gepflegt. Hier bleiben technische Entscheidungen, Sicherheitswirkungen und Betriebsverfahren dokumentiert.
 
 ## 1. Zielbild
 
@@ -23,25 +25,25 @@ Der Zielzustand ergänzt diese technische Kette um einen externen **24/7 MDR/SOC
 
 ## 2. Designentscheidungen
 
-| Entscheidung | Soll | Sicherheitswirkung | Restrisiko / Betriebswirkung | BSI-GS++ Bezug |
+| ID | Entscheidung | Soll | Sicherheitswirkung | Restrisiko / Betriebswirkung |
 |---|---|---|---|---|
-| Defender als primärer Endpoint-Schutz | ja | einheitliche AV/EDR/XDR-Telemetrie; enge Entra-/Intune-Integration | Herstellerabhängigkeit | KONF, DET, REA |
-| Intune ist führende Policy-Quelle | ja | reproduzierbare und zentral nachweisbare Konfiguration | Konflikte bei paralleler GPO/Defender-Policy möglich | KONF.2.1 |
-| Windows-Clients automatisch zu MDE onboarden | ja | vollständige EDR-Sicht und Device-Risk-Signal | fehlerhaftes Assignment erzeugt blinde Flecken | DET, KONF |
-| Defender Antivirus Always-on | aktiviert | Echtzeitschutz gegen Schadcode | mögliche App-Kompatibilitätsprobleme | KONF.7.1 |
-| Behavior Monitoring / Cloud-delivered Protection | aktiviert | bessere Erkennung unbekannter/Verhaltens-basierter Angriffe | Cloudabhängigkeit, Datenschutzprüfung | KONF.7, DET |
-| Tamper Protection | aktiviert | verhindert lokale Manipulation sicherheitskritischer Einstellungen | erschwert lokale Fehlersuche | KONF |
-| Network Protection | **Block** | blockiert bekannte schädliche Ziele/Netzaktivität | mögliche Fehlblockierungen | KONF.7.4 |
-| ASR Rules | stufenweise: Audit → Block; Microsoft-Standardregeln unmittelbar restriktiv | reduziert Office-/Script-/LOLBin-Angriffsfläche | Kompatibilitätsrisiken, daher Pilotierung | KONF.7.10, KONF.7.12 |
-| Controlled Folder Access | Pilot/Audit, danach gezielt Block | zusätzlicher Ransomware-Schutz | hoher Abstimmungsbedarf bei Fachanwendungen | KONF.7 |
-| Windows Firewall | alle Profile aktiv; eingehend Default-Deny | reduziert laterale Angriffsfläche | notwendige Ausnahmen müssen gepflegt werden | ARCH, KONF |
-| AV-/ASR-Ausnahmen | nur eng begründet, dokumentiert und befristet | verhindert dauerhafte Schutzlücken | Fehlkonfiguration kann Anwendungen beeinträchtigen | UMS, KONF |
-| Device-Risk Compliance | **Low** | Medium/High Risk wird non-compliant | Fehlklassifizierung kann Zugriff sperren | DET, REA |
-| Conditional Access | `Require device to be marked as compliant` für relevante Unternehmensressourcen; Break-glass ausgenommen | kompromittierte Geräte verlieren Cloud-Zugriff | Fehlkonfiguration kann Benutzer aussperren | BER, REA |
-| CA-Rollout | zunächst `Report-only`, dann `On` | reduziert Lockout-Risiko | Übergangsphase ohne Blockwirkung | TEST |
-| Automated Investigation / Remediation | aktiviert | verkürzt Reaktionszeit | automatische Aktionen müssen überprüft werden | REA |
-| Device Isolation | Admin-Maßnahme bei bestätigtem/hoch wahrscheinlichem Incident | stoppt laterale Bewegung und Datenabfluss | betroffener Client verliert Netzkonnektivität | REA |
-| MDR/SOC | Zielzustand 24/7 | menschliche Bewertung und Reaktion außerhalb Dienstzeit | bis Umsetzung verbleibt organisatorische Reaktionslücke | DET.2.2, REA |
+| DEF-01 | Defender als primärer Endpoint-Schutz | ja | einheitliche AV/EDR/XDR-Telemetrie; enge Entra-/Intune-Integration | Herstellerabhängigkeit |
+| DEF-02 | Intune ist führende Policy-Quelle | ja | reproduzierbare und zentral nachweisbare Konfiguration | Konflikte bei paralleler GPO/Defender-Policy möglich |
+| DEF-03 | Windows-Clients automatisch zu MDE onboarden | ja | vollständige EDR-Sicht und Device-Risk-Signal | fehlerhaftes Assignment erzeugt blinde Flecken |
+| DEF-04 | Defender Antivirus Always-on | aktiviert | Echtzeitschutz gegen Schadcode | mögliche App-Kompatibilitätsprobleme |
+| DEF-05 | Behavior Monitoring / Cloud-delivered Protection | aktiviert | bessere Erkennung unbekannter/Verhaltens-basierter Angriffe | Cloudabhängigkeit, Datenschutzprüfung |
+| DEF-06 | Tamper Protection | aktiviert | verhindert lokale Manipulation sicherheitskritischer Einstellungen | erschwert lokale Fehlersuche |
+| DEF-07 | Network Protection | **Block** | blockiert bekannte schädliche Ziele/Netzaktivität | mögliche Fehlblockierungen |
+| DEF-08 | ASR Rules | stufenweise: Audit → Block; Microsoft-Standardregeln unmittelbar restriktiv | reduziert Office-/Script-/LOLBin-Angriffsfläche | Kompatibilitätsrisiken, daher Pilotierung |
+| DEF-09 | Controlled Folder Access | Pilot/Audit, danach gezielt Block | zusätzlicher Ransomware-Schutz | hoher Abstimmungsbedarf bei Fachanwendungen |
+| DEF-10 | Windows Firewall | alle Profile aktiv; eingehend Default-Deny | reduziert laterale Angriffsfläche | notwendige Ausnahmen müssen gepflegt werden |
+| DEF-11 | AV-/ASR-Ausnahmen | nur eng begründet, dokumentiert und befristet | verhindert dauerhafte Schutzlücken | Fehlkonfiguration kann Anwendungen beeinträchtigen |
+| DEF-12 | Device-Risk Compliance | **Low** | Medium/High Risk wird non-compliant | Fehlklassifizierung kann Zugriff sperren |
+| DEF-13 | Conditional Access | `Require device to be marked as compliant` für relevante Unternehmensressourcen; Break-glass ausgenommen | kompromittierte Geräte verlieren Cloud-Zugriff | Fehlkonfiguration kann Benutzer aussperren |
+| DEF-14 | CA-Rollout | zunächst `Report-only`, dann `On` | reduziert Lockout-Risiko | Übergangsphase ohne Blockwirkung |
+| DEF-15 | Automated Investigation / Remediation | aktiviert | verkürzt Reaktionszeit | automatische Aktionen müssen überprüft werden |
+| DEF-16 | Device Isolation | Admin-Maßnahme bei bestätigtem/hoch wahrscheinlichem Incident | stoppt laterale Bewegung und Datenabfluss | betroffener Client verliert Netzkonnektivität |
+| DEF-17 | MDR/SOC | Zielzustand 24/7 | menschliche Bewertung und Reaktion außerhalb Dienstzeit | bis Umsetzung verbleibt organisatorische Reaktionslücke |
 
 ## 3. Soll-Konfiguration
 
@@ -139,24 +141,7 @@ Soll:
 - initial: `Report-only`
 - nach erfolgreichem Test: `On`
 
-## 4. BSI-Grundschutz++-Zuordnung
-
-| Control | Relevanz | Defender-/Intune-Umsetzung | Bewertung |
-|---|---|---|---|
-| KONF.2.1 Grundkonfiguration für Systeme | verbindliche Client-Baseline | Intune Endpoint Security / Baselines | teilweise, Tenant-Nachweis erforderlich |
-| KONF.7.1 Echtzeitscanner | Schadcodeprävention | Defender Antivirus Real-time Protection | Soll erfüllt, Ist verifizieren |
-| KONF.7.2 Regelmäßige Scans | Schadcodeprävention | Defender Scans / Cloud Protection | Ist verifizieren |
-| KONF.7.3 Host-basierte Angriffserkennung | EDR | Defender for Business EDR | konzeptionell erfüllt |
-| KONF.7.4 Angriffserkennung anhand von Netzverkehr | EDR/Network Protection | Network Protection + EDR | konzeptionell erfüllt |
-| KONF.7.9 Einschränkung der Installation | Softwarekontrolle | Intune, EPM/Application Control | teilweise |
-| KONF.7.10 Einschränkung der Ausführung | Execution Control | ASR/Application Control | teilweise |
-| KONF.7.12 Einschränkung von Skripten | Script-Abuse | ASR + PowerShell-Härtung | teilweise |
-| DET.3.1 ff. Protokollierung | Ereignisnachweis | Device Timeline / Incidents / Alerts | teilweise |
-| DET.4.1 Überwachung der Protokollierung | Sensor-/Logging-Health | EDR Onboarding Status / Device Inventory | teilweise |
-| DET.2.2 SOC | 24/7-Bewertung | MDR/SOC Zielzustand | offen |
-| REA | Incident Response | Isolation, Scan, Investigation, Remediation, CA-Sperre | technisch weitgehend vorhanden; Prozess offen |
-
-## 5. Regelbetrieb für Administratoren
+## 4. Regelbetrieb für Administratoren
 
 Nur Tätigkeiten, die im normalen Betrieb regelmäßig erforderlich sind.
 
@@ -264,7 +249,7 @@ Bei durch Defender verursachter Non-Compliance:
 4. erneute Risikobewertung abwarten
 5. Zugriff erst nach Compliance-Wiederherstellung zulassen
 
-## 6. Nachweise für Audit
+## 5. Technische Betriebsnachweise
 
 | Kontrolle | Primärnachweis |
 |---|---|
@@ -277,7 +262,7 @@ Bei durch Defender verursachter Non-Compliance:
 | Isolation | Device Action History / Incident Activities |
 | Ausnahmen | freigegebenes Ausnahmeverzeichnis mit Owner, Grund und Ablaufdatum |
 
-## 7. Wesentliche Defizite / Restrisiken
+## 6. Technische und betriebliche Restrisiken
 
 | Defizit | Auswirkung | Priorität |
 |---|---|---:|
@@ -288,10 +273,9 @@ Bei durch Defender verursachter Non-Compliance:
 | Logging-Aufbewahrung/SIEM-Strategie noch offen | eingeschränkte Langzeitanalyse/Korrelation | mittel |
 | Awareness separat nicht dokumentiert | Schadcode-/Phishing-Risiko bleibt organisatorisch | mittel |
 
-## 8. Änderungs- und Review-Regel
+## 7. Änderungs- und Review-Regel
 
 - sicherheitskritische Policy-Änderungen zunächst Pilot/Report-only/Audit, soweit technisch möglich
 - jede Ausnahme mit Owner, Begründung und Ablaufdatum
 - Policy-Konflikte aktiv überwachen
 - Dokument und Clickpaths mindestens halbjährlich sowie nach größeren Microsoft-Portaländerungen prüfen
-- BSI-Grundschutz++-Referenzen gegen aktuelle Rolling Publication abgleichen
