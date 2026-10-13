@@ -78,8 +78,8 @@ Die folgende Matrix verweist auf die stabilen Designentscheidungen in [SEC-DEF-0
 | KONF.7.12 | DEF-08 | ASR-/Script-Härtungsnachweis |
 | DET.3.1 ff. | DEF-01, DEF-03 | Incident-/Alert- und Retention-Konzept |
 | DET.4.1 | DEF-03 | EDR-Onboarding-Status und Health-Review |
-| DET.2.2 | DEF-16 | MDR-Vertrag, 24/7-Eskalation, Übungsprotokoll |
-| REA | DEF-12, DEF-13, DEF-14, DEF-15, DEF-16 | CA-Test, Incident-Runbooks und Response-Protokoll |
+| DET.2.2 | DEF-17 | MDR-Vertrag, 24/7-Eskalation, Übungsprotokoll |
+| REA | DEF-12, DEF-13, DEF-14, DEF-15, DEF-16, DEF-17 | CA-Test, Incident-Runbooks und Response-Protokoll |
 
 ## Nachweisführung
 
